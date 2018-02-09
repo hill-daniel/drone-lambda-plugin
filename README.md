@@ -1,4 +1,6 @@
 # Drone Lambda Plugin
+## Disclaimer
+Has been forked from the original [plugin](https://github.com/omerxx/drone-lambda-plugin), as it currently only supports us-east-1 region.
 
 ### The plugin utilizes AWS go-sdk to update an existing function's code; build your code, zip it with dependencies and upload it to S3. Then trigger the plugin for deploy.
 [![Build Status](https://droneio.spot.im/api/badges/omerxx/drone-lambda-plugin/status.svg)](https://droneio.spot.im/omerxx/drone-lambda-plugin)
@@ -65,6 +67,7 @@ pipeline:
     image: omerxx/drone-lambda-plugin
     pull: true
     function_name: my-function
+    function_region: eu-central-1
     s3_bucket: some-bucket
     file_name: lambda-dir/revenue-report-${DRONE_BUILD_NUMBER}.zip
 
