@@ -15,6 +15,7 @@ func main() {
 	currentSession, err := createSession()
 	if err != nil {
 		fmt.Println("failed to create session", err)
+		os.Exit(1)
 	}
 	svc := lambda.New(currentSession)
 
@@ -26,7 +27,7 @@ func main() {
 		} else {
 			fmt.Println("failed to update function", err.Error())
 		}
-		return
+		os.Exit(1)
 	}
 	fmt.Println(result)
 }
