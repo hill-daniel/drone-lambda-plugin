@@ -1,6 +1,7 @@
 # Drone Lambda Plugin
 ## Disclaimer
-Has been forked from the original [plugin](https://github.com/omerxx/drone-lambda-plugin), as it currently only supports us-east-1 region. Following features in addition:
+Has been forked from the original [plugin](https://github.com/danielhill/drone-lambda-plugin), as it currently only supports us-east-1 region. Following features in addition:
+* AWS Lambda region is configurable with function_region within drone plugin configuration (see example below)
 * Actually fails when something goes wrong (exit code 1, which will let the build fail) 
 
 ### The plugin utilizes AWS go-sdk to update an existing function's code; build your code, zip it with dependencies and upload it to S3. Then trigger the plugin for deploy.
@@ -14,7 +15,7 @@ go build main.go
 ## Docker:
 Build the container:
 ```
-docker build --rm=true -t omerxx/drone-lambda-plugin .
+docker build --rm=true -t danielhill/drone-lambda-plugin .
 ```
 
 ## Usage:
@@ -37,7 +38,7 @@ docker run --rm \
 ```yaml
 pipeline:
   deploy-lambda:
-    image: omerxx/drone-lambda-plugin
+    image: danielhill/drone-lambda-plugin
     pull: true
     function_name: my-function
     s3_bucket: some-bucket
@@ -64,7 +65,7 @@ pipeline:
     source: lambda-project-${DRONE_BUILD_NUMBER}.zip
 
   deploy-lambda:
-    image: omerxx/drone-lambda-plugin
+    image: danielhill/drone-lambda-plugin
     pull: true
     function_name: my-function
     function_region: eu-central-1
