@@ -6,6 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/lambda"
+	"log"
 	"os"
 )
 
@@ -14,8 +15,7 @@ const defaultRegion = "us-east-1"
 func main() {
 	currentSession, err := createSession()
 	if err != nil {
-		fmt.Println("failed to create session", err)
-		os.Exit(1)
+		log.Fatal("failed to create session", err)
 	}
 	svc := lambda.New(currentSession)
 
@@ -23,11 +23,10 @@ func main() {
 
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
-			fmt.Println(aerr.Code(), aerr.Error())
+			log.Fatal(aerr.Code(), aerr.Error())
 		} else {
-			fmt.Println("failed to update function", err.Error())
+			log.Fatal("failed to update function", err.Error())
 		}
-		os.Exit(1)
 	}
 	fmt.Println(result)
 }

@@ -1,6 +1,6 @@
 # Drone Lambda Plugin
 ## Disclaimer
-Has been forked from the original [plugin](https://github.com/danielhill/drone-lambda-plugin), as it currently only supports us-east-1 region. Following features in addition:
+Has been forked from the original [plugin](https://github.com/omerxx/drone-lambda-plugin), as it currently only supports us-east-1 region. Following features in addition:
 * AWS Lambda region is configurable with function_region within drone plugin configuration (see example below)
 * Actually fails when something goes wrong (exit code 1, which will let the build fail) 
 
