@@ -1,6 +1,6 @@
 workspace:
   base: /go
-  path: src/github.com/omerxx/drone-lambda-plugin
+  path: src/github.com/hill-daniel/drone-lambda-plugin
 
 pipeline:
   build:
@@ -13,6 +13,6 @@ pipeline:
 
   docker:
     image: plugins/docker
-    repo: omerxx/drone-lambda-plugin
+    repo: danielhill/drone-lambda-plugin
     tags: latest
     secrets: [ docker_username, docker_password, docker_email ]
